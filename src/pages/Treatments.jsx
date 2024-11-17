@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Treatments = () => {
   const [treatments, setTreatments] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch('/services.json')
@@ -10,6 +11,11 @@ const Treatments = () => {
       .then(data => setTreatments(data.services))
       .catch(error => console.error('Error fetching treatments:', error));
   }, []);
+
+  const filteredTreatments = treatments.filter((treatment) =>
+    treatment.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    treatment.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white my-8">
@@ -21,10 +27,33 @@ const Treatments = () => {
           <p className="text-center text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
             Explore our comprehensive range of dental treatments tailored to your needs.
           </p>
+          
+          <div className="max-w-md mx-auto mt-8">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search treatments..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm"
+              />
+              <svg
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
-          {treatments.map((treatment) => (
+          {filteredTreatments.map((treatment) => (
             <div 
               key={treatment.id} 
               className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out"
@@ -57,6 +86,14 @@ const Treatments = () => {
             </div>
           ))}
         </div>
+
+        {filteredTreatments.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-600 text-lg">
+              No treatments found matching your search.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

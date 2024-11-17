@@ -8,6 +8,7 @@ import MyAppointments from "../components/MyAppointments/MyAppointments";
 import Profile from "../pages/Profile";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Treatments from "../pages/Treatments";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([    
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />,
+            },
+            {
+                path: "/forgot-password",
+                element: <ForgetPassword/>,
             },
             {
                 path: "/my-appointments",

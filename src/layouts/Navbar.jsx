@@ -86,7 +86,7 @@ const Navbar = () => {
                 alt="Logo"
               />
               <span className="text-lg sm:text-xl font-bold text-blue-600 truncate">
-                DentaCare-Connect
+                DentaCare
               </span>
             </Link>
           </div>

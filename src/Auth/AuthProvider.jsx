@@ -4,7 +4,8 @@ import {
     signInWithPopup, 
     GoogleAuthProvider,
     updateProfile,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail
 } from 'firebase/auth';
  // Make sure you have this
 import { toast } from 'react-hot-toast';
@@ -77,6 +78,20 @@ const AuthProvider = ({children}) => {
         }
     };
 
+    // Add forget password function
+    const resetPassword = async (email) => {
+        setLoading(true);
+        try {
+            await sendPasswordResetEmail(auth, email);
+            toast.success('Password reset email sent!');
+        } catch (error) {
+            toast.error(error.message);
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // Add useEffect to monitor auth state
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -106,7 +121,8 @@ const AuthProvider = ({children}) => {
         registerUser,
         googleSignIn,
         loginUser,
-        logOut  // Add logOut to authInfo
+        logOut,  // Add logOut to authInfo
+        resetPassword,  // Add resetPassword to authInfo
     }
 
     return (
