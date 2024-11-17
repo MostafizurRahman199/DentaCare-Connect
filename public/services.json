@@ -1,0 +1,32 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Teeth Cleaning",
+      "description": "Professional dental cleaning service including thorough plaque and tartar removal, polishing, fluoride treatment, and gum health assessment. Our gentle cleaning process ensures maximum comfort while achieving optimal oral hygiene.",
+      "image": "https://www.carolinasmilesdentist.com/wp-content/uploads/quality-dental-cleaning.jpg",
+      "cost": "$99"
+    },
+    {
+      "id": 2,
+      "name": "Root Canal Treatment",
+      "description": "Comprehensive root canal therapy performed using advanced techniques and technology. Includes complete removal of infected pulp, thorough cleaning of root canals, medication, and permanent filling to prevent future infections.",
+      "image": "https://www.drlinger.com/hubfs/root%20canal%20treatment-078475-edited.jpeg",
+      "cost": "$799"
+    },
+    {
+      "id": 3,
+      "name": "Teeth Whitening",
+      "description": "Professional-grade teeth whitening treatment using advanced LED technology and premium whitening agents. Includes customized treatment plan, protective measures for sensitive teeth, and post-treatment care instructions.",
+      "image": "https://www.yourdentistryguide.com/wp-content/uploads/2017/11/white-teeth.jpg",
+      "cost": "$299"
+    },
+    {
+      "id": 4,
+      "name": "Dental Implants",
+      "description": "Complete dental implant procedure including consultation, 3D imaging, surgical placement of titanium implant, custom crown creation, and final fitting. Includes follow-up care and maintenance instructions.",
+      "image": "https://kheranidentalataspen.com/wp-content/uploads/2024/01/388058c6-6104-449e-8653-0129952eae67.png",
+      "cost": "$1,499"
+    }
+  ]
+}
