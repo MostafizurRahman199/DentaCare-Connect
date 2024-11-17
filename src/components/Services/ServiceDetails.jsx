@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFirebaseAuth } from '../../Auth/AuthProvider'; // Assuming you have this    
 import { toast } from 'react-toastify'; // Install if not already present
+import { saveAppointment } from '../../utils/LocalStorage';
 
 const ServiceDetails = () => {
+    
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
   const { user } = useFirebaseAuth(); // Assuming you have this context
@@ -24,25 +26,34 @@ const ServiceDetails = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: user?.email || '',
+    email: '',
     phone: '',
     appointmentDate: '',
     address: ''
   });
 
+  useEffect(() => {
+    if (user?.email) {
+      setFormData(prev => ({
+        ...prev,
+        email: user.email
+      }));
+    }
+  }, [user]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     const appointment = {
+      id: Date.now(),
       ...formData,
       serviceId: service.id,
       serviceName: service.name,
+      serviceImage: service.image,
       bookingDate: new Date().toISOString()
     };
 
-    // Get existing appointments or initialize empty array
-    const existingAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-    localStorage.setItem('appointments', JSON.stringify([...existingAppointments, appointment]));
+    saveAppointment(appointment);
 
     setIsModalOpen(false);
     toast.success('Appointment booked successfully!');

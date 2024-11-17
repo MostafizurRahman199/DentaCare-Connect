@@ -58,7 +58,7 @@ const Navbar = () => {
             <Link to="/profile" className={getLinkStyle('/profile')} onClick={() => setActiveLink('/profile')}>
               Profile
             </Link>
-            <Link to="/appointments" className={getLinkStyle('/appointments')} onClick={() => setActiveLink('/appointments')}>
+            <Link to="/my-appointments" className={getLinkStyle('/my-appointments')} onClick={() => setActiveLink('/my-appointments')}>
               My Appointments
             </Link>
           </div>

@@ -26,16 +26,17 @@ const AuthProvider = ({children}) => {
 
     // Register with email/password
     const registerUser = async (email, password, name, photoURL) => {
-        setLoading(true);
         try {
+            setLoading(true);
             const result = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(result.user, {
                 displayName: name,
                 photoURL: photoURL
             });
-            setUser(result.user);
+            toast.success('Registration successful!');
             return result.user;
         } catch (error) {
+            toast.error(error.message);
             throw error;
         } finally {
             setLoading(false);
@@ -44,13 +45,14 @@ const AuthProvider = ({children}) => {
 
     // Google Sign in
     const googleSignIn = async () => {
-        setLoading(true);
-        const provider = new GoogleAuthProvider();
         try {
+            setLoading(true);
+            const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);
-            setUser(result.user);
+            toast.success('Successfully signed in with Google!');
             return result.user;
         } catch (error) {
+            toast.error(error.message);
             throw error;
         } finally {
             setLoading(false);
