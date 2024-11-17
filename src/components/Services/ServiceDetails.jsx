@@ -62,15 +62,15 @@ const ServiceDetails = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 my-20">
       {service && (
-        <div className="grid md:grid-cols-2 gap-8">
-          <img src={service.image} alt={service.name} className="rounded-xl w-full h-[400px] object-cover" />
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold text-gray-800">{service.name}</h1>
-            <p className="text-gray-600 text-lg">{service.description}</p>
-            <div className="text-3xl font-bold text-blue-600">{service.cost}</div>
+        <div className="grid md:grid-cols-2 gap-12">
+          <img src={service.image} alt={service.name} className="rounded-2xl w-full h-[500px] object-cover shadow-lg" />
+          <div className="space-y-8">
+            <h1 className="text-5xl font-bold text-gray-800">{service.name}</h1>
+            <p className="text-gray-600 text-xl leading-relaxed">{service.description}</p>
+            <div className="text-4xl font-bold text-emerald-600">{service.cost}</div>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
+              className="px-8 py-4 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Book Appointment
             </button>
@@ -80,10 +80,10 @@ const ServiceDetails = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl p-6 max-w-md w-full">
-            <h2 className="text-2xl font-bold mb-4">Book Appointment</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <h2 className="text-3xl font-bold mb-6">Book Appointment</h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
                 placeholder="First Name"
@@ -128,13 +128,13 @@ const ServiceDetails = () => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  className="px-6 py-3 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Make Appointment
                 </button>

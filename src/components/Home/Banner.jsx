@@ -2,7 +2,7 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <div className="relative min-h-[80vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-12 sm:py-16 max-w-7xl mx-auto">
+    <div className="relative min-h-[80vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-12 sm:py-16 max-w-7xl mx-auto my-12">
       {/* Left content - enhanced with gradient background and improved typography */}
       <div className="flex-1 space-y-6 md:space-y-8 z-10">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
@@ -15,7 +15,10 @@ const Banner = () => {
           <button className="px-8 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
             Book Appointment
           </button>
-          <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300">
+          <button 
+            onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300"
+          >
             View Services
           </button>
         </div>

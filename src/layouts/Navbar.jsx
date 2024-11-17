@@ -45,19 +45,22 @@ const Navbar = () => {
     <nav className="bg-white/80 backdrop-blur-md shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Updated for better mobile display */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2">
               <img
-                className="h-8 w-auto"
-                src="/path-to-your-logo.png"
+                className="h-8 w-auto sm:h-12" // Smaller on mobile
+                src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg"
                 alt="Logo"
               />
+              <span className="text-lg sm:text-xl font-bold text-blue-600 truncate">
+                DentaCare-Connect
+              </span>
             </Link>
           </div>
 
           {/* Navigation Links - Center */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             <Link to="/" className={getLinkStyle('/')} onClick={() => setActiveLink('/')}>
               Home
             </Link>
@@ -72,18 +75,22 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* User Profile/Login Button - Right */}
-          <div className="flex items-center">
+          {/* User Profile/Login Button - Updated for mobile */}
+          <div className="hidden md:flex items-center">
             {user ? (
               <div className="relative group">
                 <button className="flex items-center space-x-2">
                   <img
-                    className="h-8 w-8 rounded-full object-cover"
-                    src={user.photoURL || '/default-avatar.png'}
+                    className="h-8 w-8 rounded-full object-cover border border-gray-200"
+                    src={user.photoURL || user.providerData?.[0]?.photoURL || '/default-avatar.png'}
                     alt={user.displayName || 'Profile'}
+                    onError={(e) => {
+                      e.target.src = '/default-avatar.png';
+                      e.target.onerror = null; // Prevent infinite loop
+                    }}
                   />
-                  <span className="hidden md:block text-sm font-medium text-gray-700">
-                    {user.displayName}
+                  <span className="hidden lg:block text-sm font-medium text-gray-700">
+                    {user.displayName || user.email?.split('@')[0] || 'User'}
                   </span>
                 </button>
                 <div className="absolute right-0 w-48 pt-2">
@@ -106,19 +113,20 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+                className="bg-blue-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-sm font-medium hover:bg-blue-700"
               >
                 Login
               </Link>
             )}
           </div>
 
-          {/* Mobile menu button - Updated with onClick handler */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile menu button - Updated styling */}
+          <div className="md:hidden flex items-center ml-2">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-blue-600"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             >
+              <span className="sr-only">Open main menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -127,15 +135,19 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu panel - Updated with transitions */}
+      {/* Mobile menu panel - Fixed positioning and z-index */}
       <div 
         className={`
-          md:hidden absolute top-16 left-0 w-full bg-white/80 backdrop-blur-md
-          transform transition-all duration-300 ease-in-out
-          ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
+          md:hidden fixed  top-16 bg-white shadow-lg
+          transform transition-all duration-300 ease-in-out z-100
+          ${isMobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}
         `}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        {/* Add a solid background overlay */}
+        <div className="absolute inset-0 bg-blue-50" />
+        
+        {/* Content container with relative positioning */}
+        <div className="relative px-4 pt-2 pb-3 space-y-2">
           <Link 
             to="/" 
             className={`block ${getLinkStyle('/')}`}
@@ -167,15 +179,26 @@ const Navbar = () => {
             Profile
           </Link>
           <Link 
-            to="/appointments" 
-            className={`block ${getLinkStyle('/appointments')}`}
+            to="/my-appointments" 
+            className={`block ${getLinkStyle('/my-appointments')}`}
             onClick={() => {
-              setActiveLink('/appointments');
+              setActiveLink('/my-appointments');
               setIsMobileMenuOpen(false);
             }}
           >
             My Appointments
           </Link>
+          
+          {/* Add login button for mobile */}
+          {!user && (
+            <Link 
+              to="/login" 
+              className="block w-full text-center bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

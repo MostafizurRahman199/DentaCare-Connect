@@ -13,7 +13,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+    <section id="services" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 leading-tight">
