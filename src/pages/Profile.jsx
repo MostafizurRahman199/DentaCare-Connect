@@ -3,6 +3,12 @@ import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
 
+const getProfileImage = (user) => {
+  return user?.photoURL || 
+         user?.providerData?.[0]?.photoURL || 
+         'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+};
+
 const Profile = () => {
     const { user } = useFirebaseAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,9 +37,13 @@ const Profile = () => {
             <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
                 <div className="flex flex-col items-center">
                     <img
-                        src={user?.photoURL || '/default-avatar.png'}
+                        src={getProfileImage(user)}
                         alt="Profile"
                         className="w-32 h-32 rounded-full object-cover mb-4"
+                        onError={(e) => {
+                            e.target.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+                            e.target.onerror = null;
+                        }}
                     />
                     <h1 className="text-2xl font-bold mb-2">{user?.displayName}</h1>
                     <p className="text-gray-600 mb-4">{user?.email}</p>

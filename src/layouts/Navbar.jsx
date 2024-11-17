@@ -41,6 +41,38 @@ const Navbar = () => {
     }
   };
 
+  // Update the getProfileImage helper function
+  const getProfileImage = (user) => {
+    if (user?.photoURL) {
+        return user?.photoURL;
+    }
+    
+    if (user?.providerData) {
+        for (const provider of user.providerData) {
+            if (provider.photoURL) {
+                return provider.photoURL;
+            }
+        }
+    }
+    
+    return 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+  };
+
+  // Update the image component to handle loading states
+  const ProfileImage = ({ user }) => {
+    const [imageError, setImageError] = React.useState(false);
+    const imageUrl = !imageError ? getProfileImage(user) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+
+    return (
+        <img
+            className="h-8 w-8 rounded-full object-cover border border-gray-200"
+            src={imageUrl}
+            alt={user.displayName || 'Profile'}
+            onError={() => setImageError(true)}
+        />
+    );
+  };
+
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,15 +112,7 @@ const Navbar = () => {
             {user ? (
               <div className="relative group">
                 <button className="flex items-center space-x-2">
-                  <img
-                    className="h-8 w-8 rounded-full object-cover border border-gray-200"
-                    src={user.photoURL || user.providerData?.[0]?.photoURL || '/default-avatar.png'}
-                    alt={user.displayName || 'Profile'}
-                    onError={(e) => {
-                      e.target.src = '/default-avatar.png';
-                      e.target.onerror = null; // Prevent infinite loop
-                    }}
-                  />
+                  <ProfileImage user={user} />
                   <span className="hidden lg:block text-sm font-medium text-gray-700">
                     {user.displayName || user.email?.split('@')[0] || 'User'}
                   </span>

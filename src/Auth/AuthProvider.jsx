@@ -49,6 +49,10 @@ const AuthProvider = ({children}) => {
             setLoading(true);
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);
+            
+            // Set user state after successful sign-in
+            setUser(result.user);
+            
             toast.success('Successfully signed in with Google!');
             return result.user;
         } catch (error) {
