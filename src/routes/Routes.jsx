@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import MyAppointments from "../components/MyAppointments/MyAppointments";
 import Profile from "../pages/Profile";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import Treatments from "../pages/Treatments";
 
 const router = createBrowserRouter([    
     {
@@ -17,11 +18,15 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
-                {
+            {
                     path: "/services/:id",
                 element: <PrivateRoute>
                     <ServiceDetails />
                 </PrivateRoute>,
+            },
+            {
+                path: "/treatments",
+                element: <Treatments />,
             },
             {
                 path: "/register",

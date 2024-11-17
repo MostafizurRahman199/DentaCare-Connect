@@ -27,6 +27,118 @@
       "description": "Complete dental implant procedure including consultation, 3D imaging, surgical placement of titanium implant, custom crown creation, and final fitting. Includes follow-up care and maintenance instructions.",
       "image": "https://kheranidentalataspen.com/wp-content/uploads/2024/01/388058c6-6104-449e-8653-0129952eae67.png",
       "cost": "$1,499"
+    },
+    {
+      "id": 5,
+      "name": "Dental Crown",
+      "description": "Custom-made dental crown fitting including preparation, digital impressions, temporary crown placement, and permanent crown installation. Made from high-quality porcelain or ceramic materials for durability and natural appearance.",
+      "image": "https://perfectteeth.com/wp-content/uploads/2023/12/dental-crown-perfect.jpg",
+      "cost": "$899"
+    },
+    {
+      "id": 6,
+      "name": "Invisalign Treatment",
+      "description": "Complete Invisalign clear aligner therapy including 3D scanning, customized treatment plan, regular progress checks, and retainers. Perfect for achieving a straight smile discreetly.",
+      "image": "https://www.invisalign.com/-/media/invisalign/images/homepage/homepage-hero-desktop.jpg",
+      "cost": "$3,999"
+    },
+    {
+      "id": 7,
+      "name": "Dental Bridges",
+      "description": "Fixed dental bridge procedure including preparation of adjacent teeth, custom bridge fabrication, and precise fitting. Includes follow-up adjustments and care instructions.",
+      "image": "https://www.dentalhealth.org/getmedia/89de5cdf-0abb-4f4c-a7b5-b89861f7c56f/dental-bridge",
+      "cost": "$2,499"
+    },
+    {
+      "id": 8,
+      "name": "Wisdom Teeth Removal",
+      "description": "Complete wisdom teeth extraction service including consultation, X-rays, surgical removal, and post-operative care. Includes sedation options and detailed recovery instructions.",
+      "image": "https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/40/ds00679_im03529_r7_impactedtooththu_jpg.jpg",
+      "cost": "$1,299"
+    },
+    {
+      "id": 9,
+      "name": "Dental Veneers",
+      "description": "Premium porcelain veneer service including consultation, custom design, temporary veneers, and permanent installation. Transform your smile with natural-looking, durable veneers.",
+      "image": "https://www.yourdentistryguide.com/wp-content/uploads/2017/11/veneer-procedure.jpg",
+      "cost": "$1,200"
+    },
+    {
+      "id": 10,
+      "name": "Gum Disease Treatment",
+      "description": "Comprehensive periodontal treatment including deep cleaning, root planing, antibiotic therapy, and maintenance plan. Designed to restore gum health and prevent disease progression.",
+      "image": "https://www.perioimplantadvisory.com/wp-content/uploads/2019/07/periodontitis.jpg",
+      "cost": "$599"
+    },
+    {
+      "id": 11,
+      "name": "Emergency Dental Care",
+      "description": "24/7 emergency dental services including immediate pain relief, trauma treatment, and temporary restorations. Priority scheduling for urgent dental problems.",
+      "image": "https://www.emergencydentistsusa.com/wp-content/uploads/emergency-dentist.jpg",
+      "cost": "$199"
+    },
+    {
+      "id": 12,
+      "name": "Dental Sealants",
+      "description": "Protective sealant application including cleaning, preparation, and application of dental grade sealants. Ideal for cavity prevention in children and adults.",
+      "image": "https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/dental-sealants-what-parents-need-to-know.jpg",
+      "cost": "$49"
+    },
+    {
+      "id": 13,
+      "name": "Dentures",
+      "description": "Custom denture fitting service including measurements, impressions, fittings, and adjustments. Choose from full or partial dentures with natural-looking results.",
+      "image": "https://www.aspendental.com/content/dam/aspen-dental/blog/what-to-expect-when-getting-dentures.jpg",
+      "cost": "$1,999"
+    },
+    {
+      "id": 14,
+      "name": "Dental X-Rays",
+      "description": "Comprehensive digital X-ray service including bitewing, panoramic, and 3D imaging options. Includes detailed analysis and explanation of findings.",
+      "image": "https://www.dentistry.com/wp-content/uploads/2021/04/dental-x-rays.jpg",
+      "cost": "$149"
+    },
+    {
+      "id": 15,
+      "name": "Pediatric Dentistry",
+      "description": "Child-focused dental care including cleanings, fluoride treatments, and cavity prevention. Specially designed to make dental visits fun and comfortable for kids.",
+      "image": "https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/pediatric-dentist.jpg",
+      "cost": "$89"
+    },
+    {
+      "id": 16,
+      "name": "Night Guards",
+      "description": "Custom-fitted night guard including consultation, impressions, and fitting. Protect your teeth from grinding and clenching during sleep.",
+      "image": "https://www.sleepfoundation.org/wp-content/uploads/2021/02/night-guard.jpg",
+      "cost": "$299"
+    },
+    {
+      "id": 17,
+      "name": "Smile Makeover",
+      "description": "Comprehensive smile transformation including consultation, digital planning, and combination of cosmetic procedures. Create your perfect smile with our expert team.",
+      "image": "https://www.yourdentistryguide.com/wp-content/uploads/2017/11/smile-makeover.jpg",
+      "cost": "$4,999"
+    },
+    {
+      "id": 18,
+      "name": "TMJ Treatment",
+      "description": "Complete TMJ disorder treatment including evaluation, custom treatment plan, and therapy options. Includes exercises, appliances, and follow-up care.",
+      "image": "https://www.tmj.org/wp-content/uploads/2020/04/tmj-treatment.jpg",
+      "cost": "$799"
+    },
+    {
+      "id": 19,
+      "name": "Dental Bonding",
+      "description": "Cosmetic bonding procedure including tooth preparation, composite application, and finishing. Perfect for repairing chips, gaps, and minor imperfections.",
+      "image": "https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/dental-bonding.jpg",
+      "cost": "$399"
+    },
+    {
+      "id": 20,
+      "name": "Oral Cancer Screening",
+      "description": "Thorough oral cancer screening using advanced detection technology. Includes comprehensive examination of oral tissues and detailed risk assessment.",
+      "image": "https://perfectteeth.com/wp-content/uploads/2023/12/oral-cancer-screening-perfect.jpg",
+      "cost": "$79"
     }
   ]
 }

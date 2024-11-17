@@ -1,13 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useFirebaseAuth } from '../Auth/AuthProvider';
 
 const Navbar = () => {
-  // Add state for mobile menu
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  // Add active link state
-  const [activeLink, setActiveLink] = React.useState(window.location.pathname);
-  const { user, logOut } = useFirebaseAuth();
+  const [activeLink, setActiveLink] = React.useState(location.pathname);
+  const { user, logOut, loading } = useFirebaseAuth();
+
+  // Add effect to update activeLink when location changes
+  React.useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
+  // Add loading check
+  if (loading) {
+    return <div className="h-16" />; // Placeholder for navbar height
+  }
 
   // Add link style helper
   const getLinkStyle = (path) => `
